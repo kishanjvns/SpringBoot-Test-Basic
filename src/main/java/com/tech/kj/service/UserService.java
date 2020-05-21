@@ -8,7 +8,7 @@ import com.tech.kj.entity.Users;
 public interface UserService {
 	public List<Users> getAllUsers();
 	
-	public void save(Users user);
+	public Users save(Users user);
 
 	Optional<Users> getUserById(int id);
 }
