@@ -35,8 +35,8 @@ public class UserController {
 
 	@PostMapping
 	public ResponseEntity saveUser(@RequestBody Users user) {
-		userService.save(user);
-		return ResponseEntity.ok().build();
+		Users userCreated=  userService.save(user); 
+		return ResponseEntity.ok().body(userCreated); 
 	}
 
 	@GetMapping(value = "/{id}")
