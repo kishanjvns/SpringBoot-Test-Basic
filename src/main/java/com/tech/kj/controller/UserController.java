@@ -16,12 +16,16 @@ import com.tech.kj.entity.Users;
 import com.tech.kj.service.UserService;
 
 import javassist.NotFoundException;
+import redis.clients.jedis.Jedis;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	Jedis jedis;
 
 	@GetMapping()
 	public ResponseEntity<List<Users>> getUsers() throws NotFoundException {
@@ -31,6 +35,14 @@ public class UserController {
 		} else {
 			throw new NotFoundException("no data available");
 		}
+	}
+
+	@GetMapping("/count")
+	public ResponseEntity<Integer> counter() throws NotFoundException {
+		int x= Integer.valueOf(jedis.get("mykey"));
+		++x;
+		jedis.set("mykey",String.valueOf(x));
+		return ResponseEntity.ok().body(x);
 	}
 
 	@PostMapping
