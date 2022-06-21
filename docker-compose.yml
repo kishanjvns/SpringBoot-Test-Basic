@@ -1,8 +1,8 @@
 version: "3.7"
 services:
-        redis:
-                image: redis
-        web:
-                build: .
-                ports:
-                  - 8080:8080
+ redis-server:
+  image: redis
+ web-app:
+  build: .
+  ports:
+   - "8080:8080"

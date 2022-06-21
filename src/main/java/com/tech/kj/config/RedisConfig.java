@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 public class RedisConfig {
     @Bean
     public Jedis jedis(){
-        Jedis jedis= new Jedis("localhost",6379);
+        Jedis jedis= new Jedis("redis-server",6379);
         return jedis;
     }
 }
