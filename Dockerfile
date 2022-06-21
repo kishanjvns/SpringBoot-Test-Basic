@@ -17,7 +17,7 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 WORKDIR /myapp
 ENV JAVA_HOME /usr/lib/jvm/default-jvm/
 COPY . /myapp
-RUN mvn clean install
+RUN mvn clean install -Dmaven.test.skip=true
 RUN pwd
 EXPOSE 8080
 CMD ["java","-jar","/myapp/target/sample.jar"]
